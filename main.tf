@@ -83,7 +83,7 @@ resource "azurerm_network_security_group" "tf-guide-sg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "${var.source_network}"
+    source_address_prefix      = "${var.ssh_source_network}"
     destination_address_prefix = "*"
   }
 }
