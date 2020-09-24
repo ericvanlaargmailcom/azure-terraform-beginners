@@ -89,3 +89,8 @@ variable "source_network" {
   description = "Allow access from this network prefix. Defaults to '*'."
   default     = "*"
 }
+
+variable "ssh_source_network" {
+  description = "Allow SSH access from this network prefix. Defaults to '*'."
+  default     = "*"
+}
