@@ -14,8 +14,13 @@
 # You can find a complete list of Azure resources supported by Terraform here:
 # https://www.terraform.io/docs/providers/azurerm/
 
-provider "azurerm" {
- version = "~> 1.44"
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 1.44"
+    }
+  }
 }
 
 resource "azurerm_resource_group" "tf_azure_guide" {
@@ -108,11 +113,11 @@ resource "azurerm_network_interface" "tf-guide-nic" {
 # optionally add a public IP address for Internet-facing applications and 
 # demo environments like this one.
 resource "azurerm_public_ip" "tf-guide-pip" {
-  name                         = "${var.prefix}-ip"
-  location                     = var.location
-  resource_group_name          = azurerm_resource_group.tf_azure_guide.name
-  allocation_method = "Dynamic"
-  domain_name_label            = var.hostname
+  name                = "${var.prefix}-ip"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.tf_azure_guide.name
+  allocation_method   = "Dynamic"
+  domain_name_label   = var.hostname
 }
 
 # And finally we build our virtual machine. This is a standard Ubuntu instance.
