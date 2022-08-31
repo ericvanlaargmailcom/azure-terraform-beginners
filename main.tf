@@ -18,9 +18,13 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 1.44"
+      version = "=3.0.1"
     }
   }
+}
+
+provider "azurerm" {
+  features {}
 }
 
 resource "azurerm_resource_group" "tf_azure_guide" {
@@ -50,7 +54,7 @@ resource "azurerm_subnet" "subnet" {
   name                 = "${var.prefix}subnet"
   virtual_network_name = azurerm_virtual_network.vnet.name
   resource_group_name  = azurerm_resource_group.tf_azure_guide.name
-  address_prefix       = var.subnet_prefix
+  address_prefixes       = var.subnet_prefix
 }
 
 ##############################################################################
@@ -99,7 +103,6 @@ resource "azurerm_network_interface" "tf-guide-nic" {
   name                      = "${var.prefix}tf-guide-nic"
   location                  = var.location
   resource_group_name       = azurerm_resource_group.tf_azure_guide.name
-  network_security_group_id = azurerm_network_security_group.tf-guide-sg.id
 
   ip_configuration {
     name                          = "${var.prefix}ipconfig"
