@@ -17,8 +17,8 @@
 terraform {
   required_providers {
     azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "=3.0.1"
+      source = "hashicorp/azurerm"
+      version = "3.20.0"
     }
   }
 }
@@ -110,6 +110,12 @@ resource "azurerm_network_interface" "tf-guide-nic" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.tf-guide-pip.id
   }
+}
+
+# Associate Network Interace with Network Security Group.
+resource "azurerm_network_interface_security_group_association" "tf-guide-nic" {
+  network_interface_id      = azurerm_network_interface.tf-guide-nic.id
+  network_security_group_id = azurerm_network_security_group.tf-guide-sg.id
 }
 
 # Every Azure Virtual Machine comes with a private IP address. You can also 
