@@ -7,12 +7,12 @@
 
 variable "resource_group" {
   description = "The name of your Azure Resource Group."
-  default     = "Terraform-Azure-Beginners"
+  default     = "Terraform-Azure-Beginner"
 }
 
 variable "prefix" {
   description = "This prefix will be included in the name of some resources."
-  default     = "tfguide"
+  default     = "tfguid"
 }
 
 variable "hostname" {
