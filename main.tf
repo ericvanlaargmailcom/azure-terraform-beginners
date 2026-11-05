@@ -58,9 +58,9 @@ resource "azurerm_subnet" "subnet" {
 }
 
 ##############################################################################
-# * Build an Ubuntu 16.04 Linux VM
+# * Build an Ubuntu 24.04 LTS Linux VM
 #
-# Now that we have a network, we'll deploy an Ubuntu 16.04 Linux server.
+# Now that we have a network, we'll deploy an Ubuntu 24.04 LTS Linux server.
 # An Azure Virtual Machine has several components. In this example we'll build
 # a security group, a network interface, a public ip address, a storage 
 # account and finally the VM itself. Terraform handles all the dependencies 
